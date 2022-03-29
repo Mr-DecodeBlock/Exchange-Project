@@ -26,6 +26,12 @@ contract Exchange is Ownable {
         uint256 timestamp;
     }
 
+    // Stakers model
+    struct _stakeOrder {
+        uint256 amount;
+        uint256 timestamp;
+    }
+
     //Mapping for how much token a individual has deposited
     mapping(address => mapping(address => uint256))
         public token_depositer_amount;
@@ -36,6 +42,7 @@ contract Exchange is Ownable {
     mapping(address => bool) public allowedToken_to_bool;
     mapping(address => uint256) public staker_uniqueTokenStaked;
     mapping(address => mapping(address => uint256)) public token_staker_amount;
+    mapping(address => _stakeOrder) public stakerToStakingOrder;
 
     //Events
     event Deposited(address token, uint256 _amount, address depositer);
@@ -204,6 +211,13 @@ contract Exchange is Ownable {
         uint256 depositBalance = balanceOf(_token, msg.sender);
         require(allowedToken_to_bool[_token], "This Token not allowed.");
         require(depositBalance >= _amount, "Need more.");
+
+        if (staker_uniqueTokenStaked[msg.sender] != 0) {
+            issueTokenAdvanced();
+        } else {
+            stakers.push(msg.sender);
+        }
+
         updateUniqueTokenStaked(msg.sender);
         uint256 feeAmount = (_amount * feePercentage) / 100;
         token_depositer_amount[_token][msg.sender] =
@@ -214,9 +228,10 @@ contract Exchange is Ownable {
             _amount;
         token_depositer_amount[_token][feeAccount] = feeAmount;
 
-        if (staker_uniqueTokenStaked[msg.sender] == 1) {
-            stakers.push(msg.sender);
-        }
+        stakerToStakingOrder[msg.sender] = _stakeOrder(
+            token_staker_amount[_token][msg.sender],
+            block.timestamp
+        );
     }
 
     function updateUniqueTokenStaked(address user) internal {
@@ -232,6 +247,8 @@ contract Exchange is Ownable {
         uint256 balance = token_staker_amount[_token][msg.sender];
 
         require(balance > 0, "You don't have Tokens to unstake.");
+
+        issueTokenAdvanced();
         staker_uniqueTokenStaked[msg.sender] =
             staker_uniqueTokenStaked[msg.sender] -
             1;
@@ -251,6 +268,7 @@ contract Exchange is Ownable {
                 }
             }
         }
+        stakerToStakingOrder[msg.sender] = _stakeOrder(0, 0);
     }
 
     // Update this as such --> That user can claim there reward according to the timeStamp
@@ -319,5 +337,31 @@ contract Exchange is Ownable {
         (uint256 price, uint256 decimals) = getTokenValue(_token);
         return ((token_staker_amount[_token][_staker] * price) /
             (10**decimals));
+    }
+
+    function issueTokenAdvanced() public returns (uint256) {
+        require(
+            staker_uniqueTokenStaked[msg.sender] > 0,
+            "You don't have any token staked yet!"
+        );
+        _stakeOrder storage stakeOrder = stakerToStakingOrder[msg.sender];
+        require(stakeOrder.amount > 0, "Not enough resources.");
+
+        uint256 reward = (stakeOrder.amount / 10**12) *
+            (block.timestamp - stakeOrder.timestamp);
+
+        token_depositer_amount[token][feeAccount] =
+            token_depositer_amount[token][feeAccount] -
+            reward;
+
+        token_depositer_amount[token][msg.sender] =
+            token_depositer_amount[token][msg.sender] +
+            reward;
+
+        stakerToStakingOrder[msg.sender] = _stakeOrder(
+            stakeOrder.amount,
+            block.timestamp
+        );
+        return reward;
     }
 }

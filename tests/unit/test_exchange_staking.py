@@ -7,6 +7,7 @@ from scripts.helpfull_script import (
 from scripts.deploy import deploy
 from web3 import Web3
 import pytest
+import time
 
 
 def test_can_stake():
@@ -90,3 +91,52 @@ def test_can_getStakerTotalValue():
 
 
 # 400,000,000,000,000,000,000
+
+
+def test_can_issueAdvanced():
+    if network.show_active() not in LOCAL_BLOCKCHAIN_ENVIRONMENTS:
+        pytest.skip("You are not in Local Blockchain environment.")
+    account = get_account()
+    user1 = get_account(index=1)
+    rala_token, exchange = deploy()
+
+    accountBalance = exchange.token_depositer_amount(rala_token, account)
+
+    exchange.depositEther({"from": user1, "value": Web3.toWei(3, "ether")})
+
+    exchange.stake(ADDRESS_ZERO, Web3.toWei(0.2, "ether"), {"from": user1})
+    print(exchange.token_depositer_amount(rala_token, user1))
+    print(exchange.stakerToStakingOrder(user1)[1])
+
+    exchange.stake(ADDRESS_ZERO, Web3.toWei(0.2, "ether"), {"from": user1})
+    print(exchange.token_depositer_amount(rala_token, user1))
+    print(exchange.stakerToStakingOrder(user1)[1])
+
+    exchange.stake(ADDRESS_ZERO, Web3.toWei(0.2, "ether"), {"from": user1})
+    print(exchange.token_depositer_amount(rala_token, user1))
+    print(exchange.stakerToStakingOrder(user1)[1])
+
+    exchange.stake(ADDRESS_ZERO, Web3.toWei(0.2, "ether"), {"from": user1})
+    print(exchange.token_depositer_amount(rala_token, user1))
+    print(exchange.stakerToStakingOrder(user1)[1])
+
+    # -----> assert for when we stake again
+    # assert exchange.token_depositer_amount(rala_token, user1) == Web3.toWei(
+    #     0.6, "ether"
+    # )
+    # time.sleep(180)
+    tx = exchange.issueTokenAdvanced({"from": user1})
+    print(exchange.token_depositer_amount(rala_token, user1))
+
+    tx.wait(1)
+    assert exchange.stakerToStakingOrder(user1)[0] == exchange.token_staker_amount(
+        ADDRESS_ZERO, user1
+    )
+    exchange.unstakeTokens(ADDRESS_ZERO, {"from": user1})
+    assert exchange.stakerToStakingOrder(user1)[0] == exchange.token_staker_amount(
+        ADDRESS_ZERO, user1
+    )
+
+
+# 2520000000000000000
+# 200000000000000000

@@ -11,7 +11,9 @@ def deploy():
     rala_token = RALA_Token.deploy({"from": account})
 
     print("Deploying Exchange Contract....")
-    exchange = Exchange.deploy(account, 20, rala_token, {"from": account})
+    exchange = Exchange.deploy(
+        account, 20, rala_token, {"from": account}, publish_source=True
+    )
     amount = rala_token.totalSupply({"from": account}) - KEPT_BALANCE
 
     rala_token.approve(exchange.address, amount, {"from": account})
