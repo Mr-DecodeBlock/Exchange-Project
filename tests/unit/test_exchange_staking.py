@@ -136,7 +136,3 @@ def test_can_issueAdvanced():
     assert exchange.stakerToStakingOrder(user1)[0] == exchange.token_staker_amount(
         ADDRESS_ZERO, user1
     )
-
-
-# 2520000000000000000
-# 200000000000000000

@@ -8,6 +8,9 @@ def main():
     rala_Token = RALA_Token[-1]
 
     user1 = get_account(userNumber=1)
+    # Adding ether to user1 for staking purpose
+    exchange.depositEther({"from": user1, "value": Web3.toWei(0.02, "ether")})
+
     print("Staking.....")
     exchange.stake(ADDRESS_ZERO, Web3.toWei(0.01, "ether"), {"from": user1})
     amount = Web3.toWei(0.01, "ether")
