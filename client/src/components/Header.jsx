@@ -1,7 +1,7 @@
 import React from "react";
 import { useEthers } from "@usedapp/core";
 import Logo from "../images/Logo.png";
-import "./components.css";
+import "./component.css";
 
 const Header = () => {
   const { activateBrowserWallet, account, deactivate } = useEthers();
@@ -12,29 +12,24 @@ const Header = () => {
       </div>
 
       <div className="navlinks">
-        <a href="/">Home</a>
-        <a href="/">Deposit</a>
-        <a href="/">WithDraw</a>
-        <a href="/">Stake</a>
-        <a href="/">Help</a>
+        <a href="#Home">Home</a>
+        <a href="#depositAndStake">Deposit & Stake</a>
+        <a href="#BuyRala">Buy Rala</a>
+        <a href="#Portfolio">Portfolio</a>
+        <a href="#OrderBook">Order Book</a>
       </div>
 
       <div className="connect_button_div">
         {!account && (
           <button
             className="connect_button"
-            role="button"
             onClick={() => activateBrowserWallet()}
           >
             Connect
           </button>
         )}
         {account && (
-          <button
-            className="connect_button"
-            role="button"
-            onClick={() => deactivate()}
-          >
+          <button className="connect_button" onClick={() => deactivate()}>
             Disconnect
           </button>
         )}

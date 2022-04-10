@@ -1,0 +1,92 @@
+.order-book{
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin: 1rem;
+}
+.order-book-header{
+    border: 1px solid rgb(0, 0, 0);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.one{
+    flex: 1;
+    text-align: center;
+}
+
+.two{
+    flex: 2;
+    text-align: center;
+}
+
+.order-book-body{
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.order-book-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-book-cell > button{
+    border: none;
+    cursor: pointer;
+    color: white;
+    padding: 0.8rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 250ms;
+    width: 60%;
+   
+}
+
+.order-book-cell > button:hover{
+    transform: translateY(-1px);
+}
+
+.order-book-cell > button:active{
+    background-color: #e31313;
+    border-color: rgba(79, 4, 4, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(0);
+}
+
+.red{
+    background-color: #dd3f54;;
+}
+
+.red:hover{
+    background-color: rgb(148, 39, 48);
+
+}
+
+.green{
+    background-color: #0fb978;
+}
+
+.green:hover{
+    background-color: rgb(44, 152, 103);
+}
+
+.show-order{
+    padding: 1rem;
+    margin: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: #5760E3;
+    color: white;
+}
+.show-order:hover{
+    background-color: #21299f;
+    transform: translateY(-1px);
+}
+.show-order:active{
+    background-color: white;
+    transition: 500ms all;
+}

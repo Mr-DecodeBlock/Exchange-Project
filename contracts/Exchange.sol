@@ -202,6 +202,7 @@ contract Exchange is Ownable {
         // // FeeAmount to FeeAccount
         token_depositer_amount[order.tokenGive][feeAccount] = feeAmount;
         id_to_fillOrder[_id] = true;
+        id_to_cancelOrder[_id] = true;
         emit OrderFilled(order);
     }
 

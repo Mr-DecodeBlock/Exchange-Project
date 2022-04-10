@@ -1,0 +1,302 @@
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #EFF2F5;
+    border-bottom: 1px solid #e7e7e7;
+    border-radius: 0;
+    box-shadow: 0 1px 0 rgba(0,0,0,.05);
+    margin-bottom: 0;
+    padding: 0;
+    position: relative;
+    z-index: 1030;
+}
+.header__logo > img {
+    height: auto;
+    width: auto;
+    max-height: 100px;
+    max-width: 250px;
+}
+
+.navlinks{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navlinks > a{
+    color: rgb(61, 69, 86);
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+/* CSS */
+.connect_button {
+  align-items: center;
+  background-color: #5760E3;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(255, 255, 255);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+  min-width: 145px;
+}
+
+.connect_button:hover,
+.connect_button:focus {
+  border-color: rgba(0, 0, 0, 0.9);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.connect_button:hover {
+  transform: translateY(-1px);
+}
+
+.connect_button:active {
+  background-color: #F0F0F1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+
+.greeting{
+    font-size: 1.3rem;
+    font-weight: 600;
+    width: 85%;
+    margin: 0 auto;
+    display : block;
+}
+
+
+.greeting_body > h2{
+  margin-bottom: 0;
+  font-weight: 600;
+  
+
+}
+.greeting_body > p{
+  margin-top: 0;
+  background: linear-gradient(to left,rgb(204, 4, 204),rgb(6, 46, 224));
+    background-clip: content-box;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color: transparent;
+}
+
+.features{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.feature1{
+  flex: 1;
+  margin-right: 0.5rem;
+}
+
+.feature2{
+  flex: 1;
+  margin-left: 0.5rem;
+
+}
+
+.card-body{
+  padding: 0.5rem 1rem;
+  border: 1px solid #000000;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 300;
+  margin : 0;
+  text-align: center;
+
+}
+.card-body>h2{
+  margin-bottom: 0;
+}
+
+.card-body > p{
+  color: #5d5b5b;
+  letter-spacing: 1px;
+  font-weight: 500;
+  margin-top : 0;
+}
+
+.card-buttons{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.withdrawRed{
+  background-color: #dd3f54;
+}
+
+.depositGreen {
+  background-color: #0fb978;
+}
+
+
+
+.Token-labels{
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0;
+  text-align: center;
+}
+.Token-labels > h3{
+  flex: 1;
+}
+
+.Token-body{
+  margin: 1rem auto;
+  border: 1px solid #000000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.Token-body > div >  h3{
+  margin: 0;
+  display: inline;
+}
+.one{
+  flex: 1;
+}
+
+.two{
+  flex: 1;
+}
+
+.three{
+  flex: 1;
+}
+
+.Deposit{
+  background-color: #0fb978;
+  font-weight: 700;
+}
+.Withdraw{
+  background-color: #dd3f54;
+  font-weight: 700;
+
+}
+.deposit-card{
+  margin: 4rem auto;
+  border-radius: 0.5rem;
+  background-color: #EFF2F5;
+  padding: 2rem;
+  letter-spacing: 0.8px;
+  width: 90%;
+
+
+}
+
+.deposit-card-body{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.RalaCard{
+  border: 1px solid black;
+  width: 60%;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  
+}
+
+.RalaCard__header > p{
+  display: inline;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.RalaCard__body > p{
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 0.2rem;
+}
+.RalaCard__body > input{
+  width: 30%;
+  margin: 0.2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  outline: none;
+  letter-spacing: 1.2px;
+
+}
+.buyButton{
+  width: 45%;
+  margin: 1rem auto;
+  padding: 0.5rem 1rem;
+}
+
+.DepositButton{
+  margin-top: 1rem;
+  width : 20%;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: 400;
+  color: white;
+  background-color: #0fb978;
+
+}
+
+.DepositButton:hover{
+  background-color: #0d7c51;
+}
+
+.Exchange_Overview{
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+h4 > span{
+  text-decoration: underline;
+}
+.Exchange_Overview> h3{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.Slice_heading  {
+  color : white;
+  font-size: 1.5rem;
+  width: 92%;
+  margin: 0 auto;
+}
+
+.text-danger{
+  color : red;
+}
