@@ -43,10 +43,14 @@ const StakeFeatureCard = (props) => {
           <option value="1">Rala Token RLT</option>
         </select>
       </div>
-      <div className="quantity">
-        <p className="quantityLabel">Quantity</p>
-        <input type="number" placeholder="0.00" onChange={TextChanged} />
-      </div>
+      {props.name === "Stake" ? (
+        <div className="quantity">
+          <p className="quantityLabel">Quantity</p>
+          <input type="number" placeholder="0.00" onChange={TextChanged} />
+        </div>
+      ) : (
+        <div> Unstake The whole Amount</div>
+      )}
       <button
         className={"DepositButton " + props.class}
         onClick={stakeAndUnstakeHandler}
